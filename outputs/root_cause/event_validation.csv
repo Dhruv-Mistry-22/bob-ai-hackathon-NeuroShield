@@ -1,4 +1,0 @@
-event_id,asset_id,event_type,predicted_root_cause,confidence,correct
-EV_AN_1,SOLAR_07,solar_inverter_failure,SOLAR_INVERTER_FAILURE,LOW,True
-EV_AN_2,SOLAR_03,solar_soiling,GRID_CURTAILMENT,MEDIUM,False
-EV_AN_3,WIND_04,wind_degradation,NONE_DETECTED,N/A,False

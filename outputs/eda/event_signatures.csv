@@ -1,6 +1,0 @@
-Event type,Expected signature,Observed?,Evidence
-Demand spike,Demand rises sharply,YES,Peak demand increases over previous average
-Curtailment,High transmission + reduced dispatch,YES,Utilization near 97% during events with significant curtailment
-Inverter fault,Sudden asset underperformance,YES,Observed 50% performance drop for SOLAR_07
-Soiling,Gradual performance decline,YES,Observed gradual drop in PR for SOLAR_03
-Gearbox degradation,Wind performance decline,YES,Observed gradual PR decline for WIND_04

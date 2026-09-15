@@ -1,6 +1,0 @@
-Dataset,Level,Rows,Cols,Missing,Duplicates,MinTime,MaxTime
-grid_timeseries,grid-level,5760,27,0,0,2026-01-01 00:00:00,2026-01-30 23:45:00
-renewable_assets,asset-level,43200,24,40103,0,2026-01-01 00:00:00,2026-01-30 23:45:00
-grid_resources,resource-level,28800,16,115200,0,2026-01-01 00:00:00,2026-01-30 23:45:00
-weather_forecast,weather-level,5728,8,0,0,,
-injected_events,event/ground-truth,8,9,5,0,,

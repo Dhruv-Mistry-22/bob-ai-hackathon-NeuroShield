@@ -1,4 +1,0 @@
-subset,total_battery_charge_mwh,total_battery_discharge_mwh,total_dr_mwh,total_dispatch_mwh
-All Timestamps,111201.52225116741,0.0,0.0,0.0
-High-Risk Timestamps (>85% Util),1475.0,0.0,0.0,0.0
-Curtailment Event Timestamps,1475.0,0.0,0.0,0.0
