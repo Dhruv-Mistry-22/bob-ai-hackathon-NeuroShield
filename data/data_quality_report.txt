@@ -1,0 +1,19 @@
+Grid rows: 5760
+Asset rows: 43200
+Resource rows: 28800
+Weather forecast rows: 5728
+
+Solar assets: 10
+Wind assets: 5
+Zones: 2
+
+Demand spike events: 3
+Asset anomaly events: 3
+Curtailment events: 2
+
+Missing values: Expected NaNs for non-battery resources
+Duplicate rows: 0
+Physical constraint violations: 0
+
+Dataset status:
+PASS
