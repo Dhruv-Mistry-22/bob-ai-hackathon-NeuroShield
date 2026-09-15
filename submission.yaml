@@ -1,0 +1,65 @@
+# =============================================================================
+# HACKATHON SUBMISSION METADATA
+# =============================================================================
+# Instructions:
+#   - Fill in ALL required fields (marked with # REQUIRED)
+#   - Optional fields can be left as empty strings ""
+#   - Do NOT rename this file — the evaluation pipeline reads it by name
+#   - Use double quotes around all string values
+# =============================================================================
+
+team:
+  name: "Antigravity"                  # REQUIRED
+  track: "AI / Sustainability"         # REQUIRED
+  lead:
+    name: "DhruvKumar Mistry"          # REQUIRED
+    email: "d25dce174@charusat.edu.in"         # REQUIRED
+  members:
+    - name: "Meet Patel"               # REQUIRED
+      email: "24dce094@charusat.edu.in"
+    - name: "Kakkad Priyansh"
+      email: "d25dcs156@charusat.edu.in"
+    - name: "Harsh Verma"
+      email: "d25dce173@charusat.edu.in"
+
+submission:
+  title: "GridPulse AI"                # REQUIRED
+
+  problem_statement: >                 # REQUIRED
+    Grid operators lack real-time decision support tools capable of forecasting load spikes, balancing volatile renewable generation, and preemptively identifying transmission stress. As a result, massive amounts of clean energy are unnecessarily curtailed (e.g., ~8 TWh in the US in 2023) because operators cannot safely validate actions before executing them.
+
+  solution_summary: >                  # REQUIRED
+    GridPulse AI is a premium, intelligent decision-support interface that acts as a "Performance Advisor". It unifies demand forecasting, renewable anomaly detection, and automated optimization, while uniquely running a counterfactual simulation on any proposed action to guarantee grid stability before an operator commits.
+
+  key_features:                        # REQUIRED
+    - "Predictive Counterfactual Action Validation"
+    - "Intelligent 15-minute Demand & Renewable Forecasting"
+    - "Real-time Asset Anomaly Detection & Root Cause Analysis"
+    - "Automated Load-Balancing Optimization for Curtailment Minimization"
+    - "Premium 'Command Center' UI with 3D Grid Flow & Timeline Horizons"
+
+  tech_stack:
+    languages: ["Python", "HTML", "CSS"]                      # REQUIRED
+    frameworks: ["Streamlit", "Scikit-Learn", "Pandas", "Plotly"]
+    ibm_technologies: ["IBM Bob"]
+    databases: ["CSV"]
+    other: ["Playwright"]
+
+  what_we_are_most_proud_of: >         
+    We are incredibly proud of the Action Validation (Counterfactual Test) engine and the bespoke UI. Rather than a basic dashboard, we engineered a custom, highly professional dark/light mode "Command Center" interface directly on top of Streamlit that makes interpreting complex optimization constraints intuitive for operators.
+
+  known_limitations: >                 
+    Due to time constraints, the current pipeline processes pre-simulated historical datasets rather than connecting to a live grid SCADA feed or real-time IoT message broker.
+
+# =============================================================================
+# ARTIFACT LOCATIONS
+# These paths are relative to the repo root. Only change if you moved files.
+# =============================================================================
+artifacts:
+  source_code: "src/"
+  setup_guide: "docs/setup-guide.md"
+  architecture_doc: "docs/architecture.md"
+  demo_video: "demo/video"
+  live_demo: ""
+  screenshots: "demo/screenshots/"
+  presentation: "presentation/"

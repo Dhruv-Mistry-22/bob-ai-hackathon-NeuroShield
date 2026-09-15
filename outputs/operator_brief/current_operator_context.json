@@ -1,0 +1,53 @@
+{
+    "metadata": {
+        "decision_time": "2026-01-30 14:15:00",
+        "forecast_target_time": "2026-01-30 15:15:00",
+        "zone": "ZONE_A"
+    },
+    "current_state": {
+        "_source": "PATH 1 (EDA) / Dataset",
+        "demand_mw": 2655.724017702469,
+        "renewable_mw": 422.0799329928376,
+        "transmission_utilization_pct": 0.6443081643716648,
+        "curtailment_mw": 29.165505959456425
+    },
+    "demand_forecast": {
+        "_source": "PATH 3 (Demand Spike Prediction)",
+        "predicted_demand_60m": 2688.6072,
+        "spike_probability": 0.0016046163,
+        "risk_level": "LOW"
+    },
+    "renewable_forecast": {
+        "_source": "PATH 4 (Renewable Forecast)",
+        "solar_60m": 309.72623,
+        "wind_60m": 1.1171473,
+        "renewable_60m": 310.84338
+    },
+    "grid_forecast": {
+        "_source": "PATH 7 (Grid Risk)",
+        "transmission_risk": 0,
+        "curtailment_probability": 0.6332665,
+        "curtailment_predicted_mw": 10.859739072303
+    },
+    "asset_alerts": [],
+    "optimization": {
+        "_source": "PATH 8 (Optimization Actions)",
+        "action": "CHARGE",
+        "resource_type": "battery",
+        "action_mw": 196.84669930077,
+        "reason": "Relieve flow congestion or curtailment"
+    },
+    "simulation": {
+        "_source": "PATH 9 (Baseline vs Optimized Simulation)",
+        "baseline_curtailment_mwh": 2.71493476807575,
+        "optimized_curtailment_mwh": 0.0,
+        "curtailment_difference_mwh": -2.71493476807575,
+        "baseline_overload_intervals": 0,
+        "optimized_overload_intervals": 0,
+        "adverse_counterfactual": false
+    },
+    "operator_decision": {
+        "decision_flag": "GREEN",
+        "explanation": "LOW RISK: No critical anomalies, low grid risk, and no adverse counterfactuals detected."
+    }
+}

@@ -1,0 +1,16 @@
+feature,importance
+wind_generation_mw,0.7599234
+wind_rolling_mean_1h,0.11579336
+fcst_wind_60m,0.05575622
+wind_rolling_mean_6h,0.014564879
+wind_speed_ms,0.013186207
+wind_lag_1,0.0066419723
+hour,0.0050658
+wind_lag_4,0.0049561537
+wind_lag_96,0.004803916
+temperature_c,0.0045258957
+fcst_temp_60m,0.0045257886
+day_of_week,0.004505624
+humidity_pct,0.0035065548
+minute,0.0022441938
+is_weekend,0.0

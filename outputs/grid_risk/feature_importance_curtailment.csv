@@ -1,0 +1,13 @@
+Feature,Importance
+predicted_total_renewable_60m,0.57285166
+predicted_solar_60m,0.099373996
+predicted_demand_mw,0.04949912
+demand_mw,0.048967704
+solar_generation_mw,0.039896023
+predicted_wind_60m,0.034015805
+future_renewable_penetration_60m,0.033706732
+future_net_load_60m,0.033506926
+wind_generation_mw,0.033433776
+transmission_headroom_mw,0.030129222
+transmission_utilization,0.024619024
+total_resource_capacity_mw,0.0
