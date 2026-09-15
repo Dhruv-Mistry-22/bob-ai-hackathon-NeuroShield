@@ -9,7 +9,7 @@
 # =============================================================================
 
 team:
-  name: "Antigravity"                  # REQUIRED
+  name: "NeuroShield"                  # REQUIRED
   track: "AI / Sustainability"         # REQUIRED
   lead:
     name: "DhruvKumar Mistry"          # REQUIRED
