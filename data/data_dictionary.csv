@@ -1,0 +1,3 @@
+file,column,description
+grid_timeseries.csv,timestamp,15-min interval start time
+renewable_assets.csv,actual_power_kw,Actual generated power
