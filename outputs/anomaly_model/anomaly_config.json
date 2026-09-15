@@ -1,0 +1,23 @@
+{
+  "features": [
+    "norm_residual",
+    "sudden_drop",
+    "degradation_drop",
+    "perf_ratio"
+  ],
+  "thresholds": {
+    "NORMAL": "< 0.30",
+    "WATCH": "< 0.50",
+    "ANOMALOUS": "< 0.75",
+    "CRITICAL": ">= 0.75"
+  },
+  "rolling_windows": [
+    "1h (4 steps)",
+    "6h (24 steps)"
+  ],
+  "weights": {
+    "sudden": 0.4,
+    "degradation": 0.4,
+    "isolation_forest": 0.2
+  }
+}

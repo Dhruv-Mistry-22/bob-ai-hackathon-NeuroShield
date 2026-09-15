@@ -1,0 +1,9 @@
+event_id,event_type,start_timestamp,end_timestamp,zone_id,asset_id,severity,root_cause,description
+EV_DS_0,demand_spike,2026-01-05 18:00:00,2026-01-05 20:00:00,ZONE_A,,High,extreme_weather,Demand spike due to cold/heat
+EV_DS_1,demand_spike,2026-01-12 17:00:00,2026-01-12 19:00:00,ZONE_B,,High,extreme_weather,Demand spike due to cold/heat
+EV_DS_2,demand_spike,2026-01-20 18:30:00,2026-01-20 20:30:00,ZONE_A,,High,extreme_weather,Demand spike due to cold/heat
+EV_CT_3,grid_curtailment,2026-01-08 11:00:00,2026-01-08 14:00:00,ZONE_A,,Medium,transmission_congestion,Grid curtailment due to low demand and high solar
+EV_CT_4,grid_curtailment,2026-01-25 12:00:00,2026-01-25 15:00:00,ZONE_B,,Medium,transmission_congestion,Grid curtailment due to low demand and high solar
+EV_AN_1,solar_inverter_failure,2026-01-15 10:00:00,2026-01-15 16:00:00,ZONE_B,SOLAR_07,High,inverter_fault,Inverter high temperature fault
+EV_AN_2,solar_soiling,2026-01-05 00:00:00,2026-01-30 23:45:00,ZONE_A,SOLAR_03,Low,soiling,Gradual performance degradation
+EV_AN_3,wind_degradation,2026-01-10 00:00:00,2026-01-30 23:45:00,ZONE_B,WIND_04,Medium,gearbox_degradation,Gearbox wear affecting power curve
