@@ -8,7 +8,7 @@
 
 | Field         | Value                                    |
 | ------------- | ---------------------------------------- |
-| **Team Name** | Antigravity                              |
+| **Team Name** | NeuroShield                              |
 | **Track**     | AI / Sustainability                      |
 | **Team Lead** | DhruvKumar Mistry                        |
 | **Members**   | Meet Patel, Kakkad Priyansh, Harsh Verma |
