@@ -59,16 +59,9 @@ The system uses a 60-minute predictive horizon to estimate upcoming demand, rene
 
 ```text
 ├── data/                       # Grid telemetry, renewable assets, resources and weather
-├── src/                        # End-to-end modelling and decision pipeline
-│   ├── features.py             # PATH 2 — Feature engineering
-│   ├── demand_forecast.py      # PATH 3 — Demand prediction
-│   ├── renewable_forecast.py   # PATH 4 — Renewable forecasting
-│   ├── asset_anomaly.py        # PATH 5 — Asset anomaly detection
-│   ├── root_cause.py           # PATH 6 — Root-cause diagnostics
-│   ├── grid_risk.py            # PATH 7 — Grid risk and curtailment prediction
-│   ├── optimizer.py             # PATH 8 — Constrained optimization
-│   ├── baseline_vs_optimized.py# PATH 9 — Counterfactual simulation
-│   └── operator_brief.py       # PATH 10 — Operator decision brief
+├── demo/                       # Demo video and dashboard screenshots
+Video
+├── docs/                       # Project documentation (setup, architecture, etc.)
 ├── outputs/                    # Deterministic model and analysis outputs
 │   ├── demand_model/
 │   ├── renewable_model/
@@ -77,12 +70,24 @@ The system uses a 60-minute predictive horizon to estimate upcoming demand, rene
 │   ├── grid_risk/
 │   ├── optimization/
 │   ├── simulation/
-│   ├── operator_brief/
-│   └── final_validation/
+│   └── operator_brief/
+├── presentation/               # Pitch deck and presentation slides
+├── scripts/                    # Utility scripts (data generation, manual entry)
+├── src/                        # End-to-end modelling and decision pipeline
+│   ├── app.py                  # Streamlit human-in-the-loop dashboard
+│   ├── run_pipeline.py         # Sequential pipeline execution
+│   ├── features.py             # PATH 2 — Feature engineering
+│   ├── demand_forecast.py      # PATH 3 — Demand prediction
+│   ├── renewable_forecast.py   # PATH 4 — Renewable forecasting
+│   ├── asset_anomaly.py        # PATH 5 — Asset anomaly detection
+│   ├── root_cause.py           # PATH 6 — Root-cause diagnostics
+│   ├── grid_risk.py            # PATH 7 — Grid risk and curtailment prediction
+│   ├── optimizer.py            # PATH 8 — Constrained optimization
+│   ├── baseline_vs_optimized.py# PATH 9 — Counterfactual simulation
+│   └── operator_brief.py       # PATH 10 — Operator decision brief
 ├── tests/                      # Data integrity and integration tests
-├── app.py                      # Streamlit human-in-the-loop dashboard
-├── run_pipeline.py             # Sequential pipeline execution
-└── requirements.txt             # Python dependencies
+├── requirements.txt            # Python dependencies
+└── submission.yaml             # Hackathon submission metadata
 ```
 
 ---
@@ -96,10 +101,10 @@ The system uses a 60-minute predictive horizon to estimate upcoming demand, rene
 python -m pip install -r requirements.txt
 
 # 2. Run the end-to-end pipeline
-python run_pipeline.py
+python src/run_pipeline.py
 
 # 3. Launch the human-in-the-loop dashboard
-python -m streamlit run app.py
+python -m streamlit run src/app.py
 ```
 
 ---
@@ -108,10 +113,9 @@ python -m streamlit run app.py
 
 | Artifact        | Link                                            |
 | --------------- | ----------------------------------------------- |
-| 📹 Demo Video   | See the submitted demo-video artifact           |
-| 🌐 Live Demo    | See the submitted live-demo artifact            |
-| 🖼️ Screenshots | See the dashboard screenshots in the repository |
-| 📊 Presentation | See the submitted presentation                  |
+| 📹 Demo Video   | [Video.mp4](demo/Video.mp4)                     |
+| 🖼️ Screenshots | [Grid Status](demo/screenshots/1_light_mode_overview.png) <br> [Asset Health](demo/screenshots/2_light_mode_asset_health.png) <br> [Action Validation](demo/screenshots/3_light_mode_validation.png) |
+| 📊 Presentation | [GridPulse_AI.pptx](presentation/GridPulse_AI.pptx) |
 
 ---
 
