@@ -60,7 +60,6 @@ The system uses a 60-minute predictive horizon to estimate upcoming demand, rene
 ```text
 ├── data/                       # Grid telemetry, renewable assets, resources and weather
 ├── demo/                       # Demo video and dashboard screenshots
-Video
 ├── docs/                       # Project documentation (setup, architecture, etc.)
 ├── outputs/                    # Deterministic model and analysis outputs
 │   ├── demand_model/
