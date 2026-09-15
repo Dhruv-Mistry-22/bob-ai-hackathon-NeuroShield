@@ -1,0 +1,577 @@
+Exactly. Let's break the **24-hour GridPulse AI build into clear paths/phases**, so we always know what comes next.
+
+# 🧭 GridPulse AI — Complete MVP Roadmap
+
+```text
+PATH 1
+EDA + Data Understanding
+        ↓
+PATH 2
+Feature Engineering + ML Dataset
+        ↓
+PATH 3
+Demand Spike Prediction
+        ↓
+PATH 4
+Renewable Generation Forecast
+        ↓
+PATH 5
+Renewable Asset Anomaly Detection
+        ↓
+PATH 6
+Root Cause Analysis
+        ↓
+PATH 7
+Grid Risk + Curtailment Prediction
+        ↓
+PATH 8
+Optimization / Recommended Actions
+        ↓
+PATH 9
+Baseline vs Optimized Simulation
+        ↓
+PATH 10
+AI Operator Brief
+        ↓
+PATH 11
+Streamlit Dashboard
+        ↓
+PATH 12
+Integration + Testing + Demo
+```
+
+The dataset itself already contains the grid-level data, asset telemetry, controllable resources, weather forecasts, and injected event ground truth we need for these paths. 
+
+---
+
+## PATH 1 — EDA 🔍
+
+**Goal:** Understand the data before modeling.
+
+### 1.1 Data structure
+
+Check:
+
+* rows
+* columns
+* datatypes
+* missing values
+* duplicates
+* timestamp frequency
+* unique zones
+* unique assets
+* unique resources
+
+### 1.2 Grid behavior
+
+Analyze:
+
+```text
+Demand
+Temperature
+Renewable generation
+Reserve margin
+Grid frequency
+Transmission flow
+Transmission capacity
+Curtailment
+```
+
+Questions:
+
+> When is demand highest?
+
+> What does a normal day look like?
+
+> When does renewable generation peak?
+
+> When does transmission become stressed?
+
+---
+
+### 1.3 Demand analysis
+
+```text
+Demand
+ ↓
+Hourly pattern
+ ↓
+Daily pattern
+ ↓
+Zone comparison
+ ↓
+Spike behavior
+```
+
+We'll identify what actually constitutes a **demand spike**.
+
+---
+
+### 1.4 Renewable analysis
+
+Separate:
+
+```text
+Solar
+Wind
+```
+
+Analyze:
+
+* expected generation
+* actual generation
+* capacity factor
+* day/night behavior
+* zone differences
+* relationship with weather
+
+---
+
+### 1.5 Curtailment analysis
+
+This is extremely important for our project.
+
+```text
+Transmission flow
+       ↓
+Transmission utilization
+       ↓
+Renewable available
+       ↓
+Renewable dispatched
+       ↓
+Curtailment
+```
+
+We want to prove:
+
+> **High transmission utilization → renewable curtailment**
+
+The current dataset is especially useful here because the reported curtailment-event transmission utilization is ~97%.
+
+---
+
+### 1.6 Asset analysis
+
+For each renewable asset:
+
+```text
+Expected power
+Actual power
+Performance ratio
+Temperature
+Voltage
+Current
+Power factor
+Curtailment command
+Fault code
+```
+
+Then inspect the injected anomaly patterns:
+
+```text
+SOLAR_07
+    ↓
+Inverter fault
+
+SOLAR_03
+    ↓
+Soiling
+
+WIND_04
+    ↓
+Gearbox degradation
+```
+
+---
+
+### 1.7 Event validation
+
+Overlay the ground-truth events on the actual measurements.
+
+For example:
+
+```text
+Demand
+  │                 ╭───╮
+  │              ╭──╯   ╰──╮
+  │──────────────╯           ╰────
+                 ↑
+            Demand spike
+```
+
+And:
+
+```text
+Transmission utilization
+  │                 ╭────────╮
+  │              ╭──╯        ╰──
+  │──────────────╯
+                ↑
+         Curtailment event
+```
+
+This tells us whether the synthetic events have **learnable signatures**.
+
+---
+
+# PATH 2 — Feature Engineering ⚙️
+
+After EDA, create the features.
+
+We don't want every raw column going blindly into the model.
+
+Example:
+
+```text
+Raw data
+   ↓
+Time features
+   ├── hour
+   ├── day_of_week
+   ├── month
+   └── holiday
+   ↓
+Lag features
+   ├── demand_lag_1
+   ├── demand_lag_4
+   └── demand_lag_96
+   ↓
+Rolling features
+   ├── demand_mean_1h
+   ├── demand_mean_6h
+   └── demand_std_6h
+   ↓
+Weather features
+   ├── temperature
+   ├── humidity
+   └── etc.
+   ↓
+Grid features
+   ├── transmission_utilization
+   ├── reserve_margin
+   └── renewable_share
+```
+
+Result:
+
+```text
+ML-ready dataset
+```
+
+---
+
+# PATH 3 — Demand Spike Prediction 📈
+
+**Model #1**
+
+```text
+Features
+   ↓
+XGBoost
+   ↓
+Future demand
+   ↓
+Spike probability
+```
+
+Output:
+
+```text
+Demand spike probability = 87%
+Risk = HIGH
+Expected peak = 3,100 MW
+```
+
+---
+
+# PATH 4 — Renewable Forecast ☀️🌬️
+
+**Models #2 and #3**
+
+### Solar
+
+```text
+Weather + historical solar
+            ↓
+          XGBoost
+            ↓
+       Solar forecast
+```
+
+### Wind
+
+```text
+Weather + historical wind
+            ↓
+          XGBoost
+            ↓
+        Wind forecast
+```
+
+Then:
+
+```text
+Demand forecast
+       +
+Solar forecast
+       +
+Wind forecast
+       ↓
+Future net load
+```
+
+---
+
+# PATH 5 — Asset Anomaly Detection 🚨
+
+Now move from **grid level → individual asset level**.
+
+```text
+Expected power
+      vs
+Actual power
+      ↓
+Performance deviation
+      ↓
+Anomaly score
+```
+
+Output:
+
+```text
+SOLAR_07
+⚠ ANOMALY
+Severity: HIGH
+```
+
+---
+
+# PATH 6 — Root Cause Analysis 🧠
+
+Anomaly alone isn't enough.
+
+We need:
+
+```text
+Anomaly
+   ↓
+Why?
+   ↓
+Root cause
+```
+
+Possible outputs:
+
+```text
+Inverter fault
+Soiling
+Gearbox degradation
+Grid curtailment
+Normal operation
+```
+
+This can initially be a **hybrid system**:
+
+```text
+ML anomaly score
+       +
+Domain rules
+       +
+SHAP/explanations
+       ↓
+Root cause
+```
+
+---
+
+# PATH 7 — Grid Risk + Curtailment Prediction ⚡
+
+Now combine everything.
+
+```text
+Demand forecast
+Renewable forecast
+Transmission
+Reserve
+Asset health
+       ↓
+Grid Risk Engine
+       ↓
+Curtailment risk
+```
+
+Example:
+
+```text
+Demand spike risk       87%
+Renewable forecast    1,450 MW
+Transmission loading    97%
+Reserve margin            8%
+
+             ↓
+
+CURTAILMENT RISK: HIGH
+```
+
+---
+
+# PATH 8 — Optimization 🧮
+
+Now we finally bring in the controllable resources.
+
+```text
+                 Forecast
+                    ↓
+              Grid condition
+                    ↓
+             Optimization
+                    ↓
+       ┌────────────┼────────────┐
+       ↓            ↓            ↓
+    Battery       Hydro          DR
+       ↓            ↓            ↓
+       └────────────┼────────────┘
+                    ↓
+              Minimum cost
+              + minimum
+              curtailment
+```
+
+The optimizer decides **how much** of each resource to use.
+
+---
+
+# PATH 9 — Baseline vs Optimized 📊
+
+This is our key evaluation.
+
+```text
+                 WITHOUT GRIDPULSE
+                         ↓
+                  Curtailment
+                         │
+                         │
+                 WITH GRIDPULSE
+                         ↓
+                  Curtailment
+```
+
+Then calculate:
+
+```text
+Curtailment avoided
+= Baseline curtailment
+− Optimized curtailment
+```
+
+This becomes our **hero KPI**.
+
+---
+
+# PATH 10 — AI Operator Brief 🤖
+
+The numerical engine produces structured results:
+
+```json
+{
+  "demand_risk": 0.87,
+  "renewable_forecast_mw": 1450,
+  "transmission_utilization": 0.97,
+  "curtailment_risk": "HIGH",
+  "asset_alert": "SOLAR_07",
+  "root_cause": "inverter_fault",
+  "battery_action_mw": 250,
+  "hydro_action_mw": 150,
+  "dr_action_mw": 100
+}
+```
+
+Then the LLM converts this into:
+
+> **Operator Brief:** High grid stress is expected around 18:00. Transmission loading is approaching its limit while renewable generation remains high. SOLAR_07 is showing an independent inverter fault. Discharging the battery and increasing hydro and demand response can reduce expected renewable curtailment.
+
+---
+
+# PATH 11 — Dashboard 🖥️
+
+Only after the individual components work.
+
+```text
+┌─────────────────────────────────────┐
+│          GRIDPULSE AI               │
+├───────────┬───────────┬─────────────┤
+│ Demand    │ Renewable │ Curtailment │
+│ Risk      │ Forecast  │ Risk        │
+├───────────┴───────────┴─────────────┤
+│      Forecast / Grid Stress         │
+├────────────────┬────────────────────┤
+│ Asset Alerts   │ Recommendations    │
+├────────────────┴────────────────────┤
+│ Curtailment: 760 → 260 MW           │
+│             500 MW AVOIDED          │
+├─────────────────────────────────────┤
+│ AI OPERATOR BRIEF                   │
+└─────────────────────────────────────┘
+```
+
+---
+
+# PATH 12 — Final Integration & Demo 🎯
+
+Finally:
+
+```text
+CSV
+ ↓
+EDA
+ ↓
+Features
+ ↓
+Demand ML
+ ↓
+Renewable ML
+ ↓
+Anomaly
+ ↓
+Root Cause
+ ↓
+Risk
+ ↓
+Optimization
+ ↓
+Curtailment comparison
+ ↓
+LLM brief
+ ↓
+Dashboard
+```
+
+### Our development priority
+
+Because we only have **24 hours**, I'd rank the paths:
+
+| Priority | Path                   | Importance                   |
+| -------- | ---------------------- | ---------------------------- |
+| 🔴 P0    | EDA + pipeline         | Must                         |
+| 🔴 P0    | Demand forecast        | Must                         |
+| 🔴 P0    | Renewable forecast     | Must                         |
+| 🔴 P0    | Anomaly + RCA          | Must                         |
+| 🔴 P0    | Optimization           | Must                         |
+| 🔴 P0    | Curtailment comparison | Must                         |
+| 🟠 P1    | Operator brief         | Very useful                  |
+| 🟠 P1    | Dashboard              | Very useful                  |
+| 🟢 P2    | SHAP polish            | Nice                         |
+| 🟢 P2    | Advanced model/LSTM    | **Skip unless time remains** |
+
+### So our immediate working plan is:
+
+**PATH 1 → EDA**
+
+**PATH 2 → Feature Engineering**
+
+**PATH 3 → Demand Spike Model**
+
+And we should finish each path before moving to the next.
+
+**Let's start with PATH 1.** We can use the uploaded CSVs and actually perform the EDA rather than just discussing what EDA should contain.
