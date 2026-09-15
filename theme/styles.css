@@ -1,0 +1,70 @@
+:root {
+    --bg-primary:   #0d1117;
+    --bg-surface:   #1a1a2e;
+    --bg-card:      #161b22;
+    --border:       #30363d;
+    --text:         #e8eaed;
+    --text-muted:   #a8b0bc;
+    --text-dim:     #6c7a8d;
+
+    --accent-blue:   #0f62fe;
+    --accent-purple: #6929c4;
+    --accent-green:  #24a148;
+    --accent-yellow: #f1c21b;
+    --accent-red:    #da1e28;
+}
+
+/* Streamlit root overrides */
+.stApp {
+    background-color: var(--bg-primary);
+    color: var(--text);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border);
+}
+
+/* Metric tiles */
+div[data-testid="metric-container"] {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+/* Tab bar */
+button[data-baseweb="tab"] {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: var(--accent-blue);
+    border-bottom: 2px solid var(--accent-blue);
+}
+
+/* Dataframe header */
+.dvn-scroller thead th {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-muted) !important;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+}
+
+/* Expander */
+details summary {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+/* Divider */
+hr { border-color: var(--border); }
+
+/* Footer caption */
+.stCaption {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+}
