@@ -1,0 +1,71 @@
+feature_name,source_column,description,feature_type,lookback,uses_future_data,used_for
+hour,timestamp,Time feature: hour,time,0,false,general
+minute,timestamp,Time feature: minute,time,0,false,general
+day_of_week,timestamp,Time feature: day_of_week,time,0,false,general
+day_of_month,timestamp,Time feature: day_of_month,time,0,false,general
+month,timestamp,Time feature: month,time,0,false,general
+week_of_year,timestamp,Time feature: week_of_year,time,0,false,general
+is_weekend,timestamp,Time feature: is_weekend,time,0,false,general
+demand_lag_1,demand_mw,Demand lag 1,lag,15m,false,demand forecasting
+demand_lag_2,demand_mw,Demand lag 2,lag,30m,false,demand forecasting
+demand_lag_4,demand_mw,Demand lag 4,lag,60m,false,demand forecasting
+demand_lag_8,demand_mw,Demand lag 8,lag,120m,false,demand forecasting
+demand_lag_96,demand_mw,Demand lag 96,lag,1440m,false,demand forecasting
+demand_rolling_mean_1h,demand_mw,Demand rolling mean 1h,rolling,1h,false,demand forecasting
+demand_rolling_std_1h,demand_mw,Demand rolling std 1h,rolling,1h,false,demand forecasting
+demand_rolling_mean_6h,demand_mw,Demand rolling mean 6h,rolling,6h,false,demand forecasting
+demand_rolling_std_6h,demand_mw,Demand rolling std 6h,rolling,6h,false,demand forecasting
+demand_rolling_mean_24h,demand_mw,Demand rolling mean 24h,rolling,24h,false,demand forecasting
+demand_rolling_std_24h,demand_mw,Demand rolling std 24h,rolling,24h,false,demand forecasting
+demand_change_15m,demand_mw,Demand change demand_change_15m,diff,diff,false,demand forecasting
+demand_change_1h,demand_mw,Demand change demand_change_1h,diff,diff,false,demand forecasting
+demand_change_24h,demand_mw,Demand change demand_change_24h,diff,diff,false,demand forecasting
+demand_pct_change_15m,demand_mw,Demand change demand_pct_change_15m,diff,diff,false,demand forecasting
+demand_pct_change_1h,demand_mw,Demand change demand_pct_change_1h,diff,diff,false,demand forecasting
+total_renewable_generation_mw,solar/wind,Total renewable,derived,0,false,forecasting
+renewable_share,total_renewable/demand,Renewable share,derived,0,false,forecasting
+solar_lag_1,solar_generation_mw,Solar lag 1,lag,15m,false,renewable forecasting
+wind_lag_1,wind_generation_mw,Wind lag 1,lag,15m,false,renewable forecasting
+solar_lag_4,solar_generation_mw,Solar lag 4,lag,60m,false,renewable forecasting
+wind_lag_4,wind_generation_mw,Wind lag 4,lag,60m,false,renewable forecasting
+solar_lag_96,solar_generation_mw,Solar lag 96,lag,1440m,false,renewable forecasting
+wind_lag_96,wind_generation_mw,Wind lag 96,lag,1440m,false,renewable forecasting
+solar_rolling_mean_1h,solar,Solar roll mean 1h,rolling,1h,false,renewable forecasting
+wind_rolling_mean_1h,wind,Wind roll mean 1h,rolling,1h,false,renewable forecasting
+solar_rolling_mean_6h,solar,Solar roll mean 6h,rolling,6h,false,renewable forecasting
+wind_rolling_mean_6h,wind,Wind roll mean 6h,rolling,6h,false,renewable forecasting
+net_load_mw,demand - renewable,Net load,derived,0,false,grid risk
+net_load_lag_1,net_load_mw,Net load lag 1,lag,15m,false,grid risk
+net_load_lag_4,net_load_mw,Net load lag 4,lag,60m,false,grid risk
+net_load_lag_96,net_load_mw,Net load lag 96,lag,1440m,false,grid risk
+transmission_utilization,flow/cap,Transmission utilization,derived,0,false,grid risk
+transmission_headroom_mw,cap-flow,Transmission headroom,derived,0,false,grid risk
+transmission_utilization_lag_1,transmission_utilization,Trans util lag 1,lag,15m,false,grid risk
+transmission_utilization_lag_4,transmission_utilization,Trans util lag 4,lag,60m,false,grid risk
+transmission_utilization_lag_96,transmission_utilization,Trans util lag 96,lag,1440m,false,grid risk
+grid_stress_indicator,composite,Grid stress indicator,derived,0,false,grid risk
+curtailment_flag,curtailment_mw,Curtailment flag,derived,0,false,curtailment prediction
+curtailment_lag_1,curtailment_mw,Curt lag 1,lag,15m,false,curtailment prediction
+curtailment_lag_4,curtailment_mw,Curt lag 4,lag,60m,false,curtailment prediction
+curtailment_lag_96,curtailment_mw,Curt lag 96,lag,1440m,false,curtailment prediction
+future_demand_15m,demand_mw,Target demand 15m,target,+15m,true,target
+future_solar_15m,solar,Target solar 15m,target,+15m,true,target
+future_wind_15m,wind,Target wind 15m,target,+15m,true,target
+future_demand_30m,demand_mw,Target demand 30m,target,+30m,true,target
+future_solar_30m,solar,Target solar 30m,target,+30m,true,target
+future_wind_30m,wind,Target wind 30m,target,+30m,true,target
+future_demand_60m,demand_mw,Target demand 60m,target,+60m,true,target
+future_solar_60m,solar,Target solar 60m,target,+60m,true,target
+future_wind_60m,wind,Target wind 60m,target,+60m,true,target
+demand_spike_target,future_demand_60m,Demand spike target,target,+60m,true,target
+hour,timestamp,Time feature: hour,time,0,false,general
+minute,timestamp,Time feature: minute,time,0,false,general
+day_of_week,timestamp,Time feature: day_of_week,time,0,false,general
+day_of_month,timestamp,Time feature: day_of_month,time,0,false,general
+month,timestamp,Time feature: month,time,0,false,general
+week_of_year,timestamp,Time feature: week_of_year,time,0,false,general
+is_weekend,timestamp,Time feature: is_weekend,time,0,false,general
+power_deviation_kw,exp-act,Power deviation,derived,0,false,anomaly detection
+actual_power_lag_1,actual_power_kw,Power lag 1,lag,15m,false,anomaly detection
+actual_power_lag_4,actual_power_kw,Power lag 4,lag,60m,false,anomaly detection
+actual_power_lag_96,actual_power_kw,Power lag 96,lag,1440m,false,anomaly detection
