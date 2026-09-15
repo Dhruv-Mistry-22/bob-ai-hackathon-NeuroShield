@@ -6,55 +6,55 @@
 * Features used: 66
 
 ## Regression Performance (Test)
-* Baseline MAE: 86.13 MW
-* XGBoost MAE: 36.23 MW
-* Baseline RMSE: 118.72 MW
-* XGBoost RMSE: 52.02 MW
-* Baseline MAPE: 3.84%
-* XGBoost MAPE: 1.64%
+* Baseline MAE: 90.75 MW
+* XGBoost MAE: 41.05 MW
+* Baseline RMSE: 124.26 MW
+* XGBoost RMSE: 59.13 MW
+* Baseline MAPE: 4.09%
+* XGBoost MAPE: 1.90%
 
 ## Classification Performance (Test)
-* Precision: 0.7500
-* Recall: 0.3429
-* F1 Score: 0.4706
-* ROC-AUC: 0.9400
-* PR-AUC: 0.5674
+* Precision: 0.6250
+* Recall: 0.4286
+* F1 Score: 0.5085
+* ROC-AUC: 0.9503
+* PR-AUC: 0.5709
 
 ## Threshold
-* Selected operational threshold: 0.70 (Tuned on Validation set for optimal F1/Recall)
+* Selected operational threshold: 0.50 (Tuned on Validation set for optimal F1/Recall)
 
 ## Feature Importance (Top 10)
                         feature  importance
-   demand_response_available_mw    0.907991
-       transmission_utilization    0.028633
-transmission_utilization_lag_96    0.015755
-                  demand_lag_96    0.010425
-                      demand_mw    0.006153
-          solar_rolling_mean_1h    0.006014
-         demand_rolling_mean_1h    0.006006
-       transmission_headroom_mw    0.004761
-         demand_rolling_mean_6h    0.002928
-                           hour    0.002600
+   demand_response_available_mw    0.907441
+       transmission_utilization    0.031768
+transmission_utilization_lag_96    0.021460
+                  demand_lag_96    0.013562
+          solar_rolling_mean_1h    0.006333
+                      demand_mw    0.004191
+         demand_rolling_mean_6h    0.002887
+                           hour    0.002707
+                   demand_lag_4    0.001042
+                   demand_lag_1    0.000820
 
 ## Injected-Event Validation
 [
   {
     "event_id": "EV_DS_0",
     "detected": true,
-    "max_probability": 0.9957463145256042,
-    "max_predicted_demand": 3135.003173828125
+    "max_probability": 0.9958752989768982,
+    "max_predicted_demand": 3120.9072265625
   },
   {
     "event_id": "EV_DS_1",
     "detected": true,
-    "max_probability": 0.9960882663726807,
-    "max_predicted_demand": 2338.192626953125
+    "max_probability": 0.9952243566513062,
+    "max_predicted_demand": 2329.1640625
   },
   {
     "event_id": "EV_DS_2",
     "detected": true,
-    "max_probability": 0.996184766292572,
-    "max_predicted_demand": 3135.139404296875
+    "max_probability": 0.9957493543624878,
+    "max_predicted_demand": 3149.163330078125
   }
 ]
 

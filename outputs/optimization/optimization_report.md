@@ -18,11 +18,11 @@ Objective Function = 1000000 * flow_violation + 10000 * renewable_curtailment + 
 - Baseline_Flow + charge - discharge - dr - dispatch + curtailment - flow_violation <= target_flow
 
 ## 4. Feasibility Audit
-Solver ran for 5552 steps.
+Solver ran for 5560 steps.
 Infeasible solutions: 0
 All constraints independently verified post-solve.
 
 ## 5. Examples
-**High-Risk Example (2026-01-02 00:15:00):**
+**High-Risk Example (2026-01-02 00:00:00):**
 - CHARGE battery: 300.0 MW
-- CURTAIL renewable: 38.51675637743597 MW
+- CURTAIL renewable: 147.22388642794505 MW

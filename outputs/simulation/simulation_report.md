@@ -9,17 +9,17 @@
 - **Overload Definition**: Strict physical bounds: `overload_mw = max(0, transmission_flow_mw - transmission_capacity_mw)`.
 
 ## 2. Overall Results (All Timestamps)
-- Historical baseline curtailment: 7068.5 MWh
-- Simulated optimized curtailment: 100488.6 MWh
-- Estimated curtailment avoided: -93420.0 MWh
-- Estimated reduction: -1321.6%
+- Historical baseline curtailment: 7040.8 MWh
+- Simulated optimized curtailment: 99105.4 MWh
+- Estimated curtailment avoided: -92064.6 MWh
+- Estimated reduction: -1307.6%
 - Baseline overload intervals: 0
 - Optimized overload intervals: 23
-- Additional renewable energy absorbed: -93420.0 MWh
+- Additional renewable energy absorbed: -92064.6 MWh
 
 ## 3. High-Risk Timestamps (>85% Util)
-- Estimated curtailment avoided: 102.4 MWh
-- Curtailment reduction: 3.7%
+- Estimated curtailment avoided: 116.3 MWh
+- Curtailment reduction: 4.2%
 - Overload intervals avoided: -23
 
 ## 4. Curtailment-Event Timestamps
@@ -27,7 +27,7 @@
 - Total battery discharging MWh: 0.0
 - Total DR MWh: 0.0
 - Total dispatch MWh: 0.0
-- Total residual curtailment MWh: 2682.8
+- Total residual curtailment MWh: 2666.1
 
 ## 5. Limitations
 - **Battery Energy Constraints**: While strict MW power injection constraints are verified, dynamic battery SOC energy constraints cannot be verified in this simulation because the dataset lacks energy_capacity_mwh.

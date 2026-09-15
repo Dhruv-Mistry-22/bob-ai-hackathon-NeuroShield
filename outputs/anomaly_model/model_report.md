@@ -37,11 +37,11 @@ The model explicitly guards against night-time solar false alarms and low-wind f
 
 ## 7. Asset Ranking (Top Problematic Assets)
 asset_id  critical_intervals  anomalous_intervals  max_anomaly_score
-SOLAR_07                  11                   40           0.826801
- WIND_02                   4                   24           0.642332
- WIND_01                   4                   24           0.640105
- WIND_03                   4                   23           0.643383
-SOLAR_03                   4                   23           0.607553
+SOLAR_07                  14                   37           0.831422
+SOLAR_03                   4                   26           0.612632
+ WIND_01                   4                   24           0.644657
+ WIND_03                   4                   23           0.647935
+ WIND_02                   4                   23           0.645538
 
 ## 8. Limitations
 - The synthetic dataset contains exactly 3 asset-level anomaly events (`solar_inverter_failure`, `solar_soiling`, `wind_degradation`). 

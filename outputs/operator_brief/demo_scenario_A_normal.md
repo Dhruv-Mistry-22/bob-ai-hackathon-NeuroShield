@@ -14,8 +14,8 @@
 - **Curtailment:** 0.0 MW
 
 ## B. NEXT 60-MINUTE OUTLOOK (Sources: PATH 3, 4, 7)
-- **Predicted Demand:** 2693.2 MW (Spike Prob: 0.00, Risk: LOW)
-- **Predicted Renewables:** 1582.1 MW (Solar: 987.5, Wind: 594.5)
+- **Predicted Demand:** 2677.7 MW (Spike Prob: 0.00, Risk: LOW)
+- **Predicted Renewables:** 1578.8 MW (Solar: 982.9, Wind: 595.9)
 - **Grid Risk:** 2
 - **Curtailment Prob:** 0.17 (Expected: 0.0 MW)
 
