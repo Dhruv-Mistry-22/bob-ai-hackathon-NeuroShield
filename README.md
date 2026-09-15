@@ -49,7 +49,7 @@ The system uses a 60-minute predictive horizon to estimate upcoming demand, rene
 | -------------------- | -------------------------------------------------------------- |
 | **Languages**        | Python                                                         |
 | **Frameworks**       | Streamlit, Pandas, NumPy                                       |
-| **IBM Technologies** | IBM Hackathon ecosystem; optional watsonx.ai explanation layer |
+| **IBM Technologies** | IBM Hackathon ecosystem; IBM BoB |
 | **Databases**        | Not required — CSV-based telemetry and model outputs           |
 | **Other**            | Scikit-Learn, XGBoost, SciPy, Plotly, pytest                   |
 
