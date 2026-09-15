@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - NeuroShield</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .chart-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--spacing-6);
+            border: 1px solid var(--border-color);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-6);
+        }
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        .stat-title {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-2);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-1);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-2);
+        }
+        .trend-up { color: var(--secondary-color); }
+        .trend-down { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="brand-text">NeuroShield</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="analytics.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                            </svg>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Events
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search analytics...">
+                </div>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User Avatar" class="avatar">
+                        <div class="user-info">
+                            <span class="user-name">Alex Smith</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="page-content">
+                <h1 class="text-2xl font-bold mb-6">Analytics Overview</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Total Views</div>
+                        <div class="stat-value">2.4M</div>
+                        <div class="stat-trend trend-up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                            +12.5%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Active Users</div>
+                        <div class="stat-value">45.2K</div>
+                        <div class="stat-trend trend-up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                            +5.2%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Bounce Rate</div>
+                        <div class="stat-value">42.3%</div>
+                        <div class="stat-trend trend-down">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                                <polyline points="17 18 23 18 23 12"></polyline>
+                            </svg>
+                            -1.1%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Avg Session</div>
+                        <div class="stat-value">4m 32s</div>
+                        <div class="stat-trend trend-up">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                            +12s
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h2 class="text-lg font-bold mb-4">Traffic Over Time</h2>
+                    <!-- Placeholder for a chart -->
+                    <svg width="100%" height="300" style="background:#f8fafc; border-radius:8px;">
+                        <!-- SVG chart lines mock -->
+                        <path d="M 0 250 Q 50 200 100 220 T 200 180 T 300 100 T 400 150 T 500 80 T 600 120 T 700 50 T 800 90 T 900 30" fill="none" stroke="#3b82f6" stroke-width="3" />
+                        <path d="M 0 250 Q 50 200 100 220 T 200 180 T 300 100 T 400 150 T 500 80 T 600 120 T 700 50 T 800 90 T 900 30 L 900 300 L 0 300 Z" fill="rgba(59, 130, 246, 0.1)" stroke="none" />
+                    </svg>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
