@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - NeuroShield</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .users-table-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        .table-header {
+            padding: var(--spacing-4) var(--spacing-6);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .table-filters {
+            display: flex;
+            gap: var(--spacing-4);
+        }
+        .filter-select {
+            padding: var(--spacing-2) var(--spacing-8) var(--spacing-2) var(--spacing-3);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: white;
+            outline: none;
+            color: var(--text-main);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: var(--spacing-4) var(--spacing-6);
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            font-size: 0.875rem;
+            color: var(--text-main);
+        }
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status-active {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .status-inactive {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .table-footer {
+            padding: var(--spacing-4) var(--spacing-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+        .pagination {
+            display: flex;
+            gap: var(--spacing-1);
+        }
+        .page-btn {
+            padding: var(--spacing-1) var(--spacing-3);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: white;
+            cursor: pointer;
+        }
+        .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="brand-text">NeuroShield</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                            </svg>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="users.html" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Events
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search users...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary">Add New User</button>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User Avatar" class="avatar">
+                        <div class="user-info">
+                            <span class="user-name">Alex Smith</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="page-content">
+                <h1 class="text-2xl font-bold mb-6">User Management</h1>
+                
+                <div class="users-table-container">
+                    <div class="table-header">
+                        <h2 class="text-lg font-semibold">All Users</h2>
+                        <div class="table-filters">
+                            <select class="filter-select">
+                                <option>All Roles</option>
+                                <option>Admin</option>
+                                <option>Editor</option>
+                                <option>Viewer</option>
+                            </select>
+                            <select class="filter-select">
+                                <option>All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Last Active</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://i.pravatar.cc/150?img=1" class="avatar" style="width:32px;height:32px" alt="">
+                                        <div class="user-info">
+                                            <span class="user-name">John Doe</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>john.doe@example.com</td>
+                                <td>Admin</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>2 mins ago</td>
+                                <td>
+                                    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://i.pravatar.cc/150?img=2" class="avatar" style="width:32px;height:32px" alt="">
+                                        <div class="user-info">
+                                            <span class="user-name">Jane Smith</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>jane.smith@example.com</td>
+                                <td>Editor</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>1 hour ago</td>
+                                <td>
+                                    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://i.pravatar.cc/150?img=3" class="avatar" style="width:32px;height:32px" alt="">
+                                        <div class="user-info">
+                                            <span class="user-name">Michael Johnson</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>michael.j@example.com</td>
+                                <td>Viewer</td>
+                                <td><span class="status-badge status-inactive">Inactive</span></td>
+                                <td>2 days ago</td>
+                                <td>
+                                    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://i.pravatar.cc/150?img=4" class="avatar" style="width:32px;height:32px" alt="">
+                                        <div class="user-info">
+                                            <span class="user-name">Emily Davis</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>emily.davis@example.com</td>
+                                <td>Editor</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>Never</td>
+                                <td>
+                                    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://i.pravatar.cc/150?img=5" class="avatar" style="width:32px;height:32px" alt="">
+                                        <div class="user-info">
+                                            <span class="user-name">William Wilson</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>william.w@example.com</td>
+                                <td>Viewer</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>5 mins ago</td>
+                                <td>
+                                    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="table-footer">
+                        <span class="text-sm text-muted">Showing 1 to 5 of 124 results</span>
+                        <div class="pagination">
+                            <button class="page-btn">&lt;</button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span style="padding:4px;">...</span>
+                            <button class="page-btn">25</button>
+                            <button class="page-btn">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
